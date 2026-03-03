@@ -493,19 +493,12 @@ h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
    SLUŽBY (Services) — dark section
    ══════════════════════════════════════ */
 .services {
-    padding: var(--section-py) 0;
+    padding: calc(var(--section-py) + 40px) 0 var(--section-py);
     background: var(--bg-dark);
     position: relative;
-}
-
-.services::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    clip-path: polygon(0 40px, 100% 0, 100% calc(100% - 40px), 0 100%);
+    margin-top: -40px;
+    margin-bottom: -40px;
 }
 
 .services-grid {
@@ -856,22 +849,72 @@ a.brand-card:hover .brand-name {
 
 
 /* ══════════════════════════════════════
+   ACCENT CTA BANNER
+   ══════════════════════════════════════ */
+.cta-banner {
+    padding: 64px 0;
+    background: linear-gradient(135deg, var(--primary) 0%, #5c1636 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(212,168,75,0.12) 0%, transparent 60%);
+}
+
+.cta-banner .container {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-banner h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    color: #fff;
+    margin-bottom: 12px;
+    text-wrap: balance;
+}
+
+.cta-banner p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-banner-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-banner .btn-accent {
+    font-size: 1.05rem;
+    padding: 16px 36px;
+}
+
+.cta-banner .btn-outline {
+    font-size: 1.05rem;
+    padding: 16px 36px;
+}
+
+
+/* ══════════════════════════════════════
    GOOGLE RECENZE (Reviews)
    ══════════════════════════════════════ */
 .reviews {
-    padding: var(--section-py) 0;
+    padding: calc(var(--section-py) + 40px) 0 var(--section-py);
     background: var(--bg-dark);
     position: relative;
-}
-
-.reviews::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    clip-path: polygon(0 0, 100% 40px, 100% 100%, 0 calc(100% - 40px));
+    margin-top: -40px;
+    margin-bottom: -40px;
 }
 
 .google-badge {
@@ -1066,19 +1109,11 @@ a.brand-card:hover .brand-name {
    KONTAKT (Contact)
    ══════════════════════════════════════ */
 .contact {
-    padding: var(--section-py) 0;
+    padding: calc(var(--section-py) + 40px) 0 var(--section-py);
     background: var(--bg-dark);
     position: relative;
-}
-
-.contact::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+    margin-top: -40px;
 }
 
 .contact-grid {
@@ -1404,6 +1439,30 @@ a.brand-card:hover .brand-name {
 
 /* ── Mobile landscape / small tablet (max 768px) ── */
 @media (max-width: 768px) {
+    .services {
+        clip-path: polygon(0 20px, 100% 0, 100% calc(100% - 20px), 0 100%);
+        margin-top: -20px;
+        margin-bottom: -20px;
+        padding-top: calc(var(--section-py) + 20px);
+    }
+
+    .reviews {
+        clip-path: polygon(0 0, 100% 20px, 100% 100%, 0 calc(100% - 20px));
+        margin-top: -20px;
+        margin-bottom: -20px;
+        padding-top: calc(var(--section-py) + 20px);
+    }
+
+    .contact {
+        clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%);
+        margin-top: -20px;
+        padding-top: calc(var(--section-py) + 20px);
+    }
+
+    .cta-banner { padding: 48px 0; }
+    .cta-banner h2 { font-size: 1.5rem; }
+    .cta-banner-buttons { flex-direction: column; align-items: center; }
+    .cta-banner-buttons .btn { width: 100%; max-width: 300px; justify-content: center; }
     :root {
         --section-py: 64px;
         --nav-height: 64px;
